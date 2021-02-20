@@ -18,6 +18,7 @@ package com.genius.glasssample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 
@@ -72,8 +73,17 @@ public class MainActivity extends BaseActivity {
 
         final TabLayout tabLayout = findViewById(R.id.page_indicator);
         tabLayout.setupWithViewPager(viewPager, true);
-    }
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, UnityPlayerActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, 3000);
+    }
+/*
     @Override
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
@@ -86,6 +96,8 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+
+ */
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
         ScreenSlidePagerAdapter(FragmentManager fm) {
