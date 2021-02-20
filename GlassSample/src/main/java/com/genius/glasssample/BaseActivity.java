@@ -17,10 +17,10 @@
 package com.genius.glasssample;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.glass.ui.GlassGestureDetector;
