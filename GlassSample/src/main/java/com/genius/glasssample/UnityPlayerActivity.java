@@ -173,12 +173,24 @@ public class UnityPlayerActivity extends BaseActivity
         switch (gesture) {
             case SWIPE_FORWARD:
                 UnityPlayer.UnitySendMessage("Cube", "SetTrue", "");
-                Toast.makeText(this, "Forward", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "forward", Toast.LENGTH_SHORT).show();
                 return true;
 
             case SWIPE_BACKWARD:
                 UnityPlayer.UnitySendMessage("Cube", "SetFalse", "");
-                Toast.makeText(this, "Backward", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "backward", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case TAP:
+                UnityPlayer.UnitySendMessage("Cube", "SetTrue", "");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        UnityPlayer.UnitySendMessage("Cube", "SetFalse", "");
+                        finish();
+                    }
+                }, 5000);
+
                 return true;
 
             default:
