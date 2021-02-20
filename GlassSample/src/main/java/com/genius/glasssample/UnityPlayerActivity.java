@@ -166,21 +166,23 @@ public class UnityPlayerActivity extends BaseActivity
     @Override public boolean onTouchEvent(MotionEvent event)          { return mUnityPlayer.injectEvent(event); }
     /*API12*/ public boolean onGenericMotionEvent(MotionEvent event)  { return mUnityPlayer.injectEvent(event); }
 
+   
     @Override
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
 
-        switch (gesture){
+        switch (gesture) {
             case SWIPE_FORWARD:
                 UnityPlayer.UnitySendMessage("Cube", "SetTrue", "");
-
-                break;
+                Toast.makeText(this, "Forward", Toast.LENGTH_SHORT).show();
+                return true;
 
             case SWIPE_BACKWARD:
                 UnityPlayer.UnitySendMessage("Cube", "SetFalse", "");
+                Toast.makeText(this, "Backward", Toast.LENGTH_SHORT).show();
+                return true;
 
-                break;
+            default:
+                return super.onGesture(gesture);
         }
-
-        return super.onGesture(gesture);
     }
 }
